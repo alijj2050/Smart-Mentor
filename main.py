@@ -13,6 +13,16 @@ from dotenv import load_dotenv
 import redis
 import aiosqlite
 from openai import OpenAI
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+class Config:
+    DATABASE_PATH = os.getenv("DATABASE_PATH", "mentor.db")
+    REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+    REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
+    api_key = os.getenv("OPENAI_API_KEY", "missing-key")
 
 # بارگذاری متغیرهای محیطی
 env_path = os.path.join(os.path.dirname(__file__), '.env')
